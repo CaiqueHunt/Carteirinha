@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso à Carteirinha</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+        }
+        
+        /* Estilo do cabeçalho */
+        h1 {
+            color: #2d5f9a;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo do botão */
+        .access-button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #2d5f9a;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .access-button:hover {
+            background-color: #234d78;
+        }
+
+        /* Mensagem adicional */
+        .info-text {
+            font-size: 14px;
+            color: #666;
+            margin-top: 15px;
+        }
+        
+        /* Estilo do iframe */
+        .pdf-viewer {
+            width: 100%;
+            height: 80vh;
+            margin-top: 20px;
+            border: none;
+            display: none; /* Oculto até o botão ser clicado */
+        }
+    </style>
+</head>
+<body>
+    <h1>Acesso à Carteirinha de Estudante</h1>
+    <p>Clique no botão abaixo para visualizar sua carteirinha:</p>
+    
+    <!-- Botão para abrir o PDF -->
+    <a href="carteirinha.pdf" target="_blank" class="access-button">Abrir Carteirinha</a>
+    
+    <!-- Visualizador de PDF (opcional, caso queira exibir o PDF diretamente na página) -->
+    <iframe src="carteirinha.pdf" class="pdf-viewer"></iframe>
+
+    <p class="info-text">Se o PDF não abrir, clique no botão para baixar a carteirinha.</p>
+
+    <!-- Script opcional para exibir o PDF na própria página ao clicar no botão -->
+    <script>
+        document.querySelector('.access-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita abrir o PDF em nova aba
+            const pdfViewer = document.querySelector('.pdf-viewer');
+            pdfViewer.style.display = 'block'; // Mostra o iframe
+            pdfViewer.src = this.getAttribute('href'); // Carrega o PDF no iframe
+        });
+    </script>
+</body>
+</html>
